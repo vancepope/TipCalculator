@@ -18,6 +18,10 @@
     <string name="per_person_tv">$0.00</string>
     <string name="rounding_label">Rounding</string>
     <string name="apply">Apply</string>
+    <string name="_tip">Tip</string>
+    <string name="_split">Split</string>
+    <string name="tip">Tip</string>
+    <string name="split">Split</string>
 
     <string-array name="split_array">
     <item>No</item>

@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
         applyButton.setOnClickListener(clicked);
         ResetButton.setOnClickListener(clicked);
 
+
         // set array adapter for spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.split_array, android.R.layout.simple_spinner_item);
@@ -123,11 +124,21 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
     public void onPause(){
         SharedPreferences.Editor edit = saved.edit();
         edit.putString("billAmountString", billAmountString);
+        edit.putFloat("percentAmt",percentAmt);
+        edit.putInt("rounding", rounding);
+        edit.putInt("split", split);
+        edit.apply();
         super.onPause();
     }
     public void onResume() {
         super.onResume();
-        billAmountString = saved.getString(billAmountString, "");
+        billAmountString = saved.getString("billAmountString", "");
+        percentAmt = saved.getFloat("percentAmt",.15f);
+        rounding = saved.getInt("rounding", ROUND_NONE);
+        split = saved.getInt("split",1);
+
+        billEditText.setText(billAmountString);
+        //PercentNumberLabel.setText(""+percentAmt);
     }
     public boolean onKey(View v, int keyCode, KeyEvent event) {
 
